@@ -1,0 +1,212 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2024
+
+
+% ready for submission
+%\usepackage[final]{neurips_2024}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+    \usepackage[preprint]{neurips_2024}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%    \usepackage[final]{neurips_2024}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2024}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+
+\title{Assignment-3 : AI and its Foundations}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{Harshvardhan Patidar\\
+  Department of Artificial Intelligence\\
+  Indian Institute of Technology Hyderabad\\
+  \texttt{ai24btech11015@iith.ac.in}
+  % example of co authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+}
+
+
+\begin{document}\
+
+
+
+\maketitle
+
+
+
+%If you want to add an abstract, use below commands
+%\begin{abstract}
+%\end{abstract}
+
+
+
+%use below command to get heading
+%\section{Heading}
+
+%If you don't want it to be included in the index, use
+%\section*{}
+
+
+
+%use below command to get sub-heading sort of thing
+%\subsection{Style}
+
+
+
+%use below commands for centering and url accordingly
+%\begin{center}
+%  \url{http://www.neurips.cc/}
+%\end{center}
+
+
+
+%Use below commmand for creating new paragraph
+%\paragraph{}
+
+
+
+%You can use below commands in the text to refer to specific sections (you need to use /label{} to where you are referring 
+%\ref{gen_inst}
+
+
+
+%use below to have nice tiny inline fractions, to increase space between them, use a tildae as in the latter
+%\nicefrac{1}{4} Hello this is harshvardhan, typing his latex assignments
+%\nicefrac{1}{4}~ Hello this is harshvardhan, typing his latex assignments
+
+
+
+%for adding a footnote (vo jo page ke niche hi niche aate hai)
+%\footnote{As in this example.}
+
+
+
+%For adding a photo/figure
+%\begin{figure}
+%  \centering
+%  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+%  \caption{Sample figure caption.}
+%\end{figure}
+
+
+
+%For a table	
+%\begin{table}
+%  \caption{Sample table title}
+%  \label{sample-table}
+%  \centering
+%  \begin{tabular}{lll}
+%    \toprule
+%    \multicolumn{2}{c}{Part}                   \\
+%    \cmidrule(r){1-2}
+%    Name     & Description     & Size ($\mu$m) \\
+%    \midrule
+%    Dendrite & Input terminal  & $\sim$100     \\
+%    Axon     & Output terminal & $\sim$10      \\
+%    Soma     & Cell body       & up to $10^6$  \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+
+
+
+%use for a giving a vertical space 
+%\medskip
+
+
+
+%Use for appendix (idk what it is)
+%\appendix
+
+
+
+%For yes, no or na
+%You should answer \answerYes{}, \answerNo{}, or \answerNA{}.
+
+The section 1.1 gives us a basic idea of what AI actually is and how it is planned to work. The focus of section 1.2 is on explaining how the foundation for AI was laid by the different fields and the advancements in them. \cite{ai2020}
+
+\section{Section 1.1}
+\paragraph{}
+	Many people prefer AI to think and act like humans, while others want it to be rational.
+	There are also diverging views on how intelligence should be defined, some focus on how machines should think, that is their internal thought process, while others give importance to how it should behave.
+
+\paragraph{}
+	From these two different sets of views, i.e. humanly vs rationally and thought vs behavior, we get four different ways to define AI, all of which have had some research programs.
+	For example, if you want AI to act humanly, you need to study about human behavior and psychology, but for rational behavior, you need to use math, statistics and control theory. 
+
+
+\begin{enumerate}
+	\item \textbf{Acting Humanly} : The objective of this approach is to make AI capable of thinking like humans. Alan Turing had proposed the turing test which mainly tested if the machine could think. A computer could only pass this test if it is able to generate responses which a human checker cant distinguish if it is written by a machine or a human. This focuses on behavior rather than internal thinking of the machine.
+	\item \textbf{Thinking Humanly} : This focuses on making AI think like humans. For this they tried to model how human brain works. Cognitive science was used to achieve this. The goal is to replicate human thinking processes by machines.
+	\item \textbf{Thinking Rationally} : This approach talks about developing AI to think rationally, that is thinking by using logic and making use of the concept of probability in cases where there is some uncertainty. The goal is to make machines think in a perfect, logical way.
+
+	\item \textbf{Acting Rationally} : The idea of this is to not make machines think like humans, but should act in a way such that it achieves the best outcome or the best expected outcome. Machines should achieve their goals in the most efficient manner, no matter if they think like humans or not. 
+\end{enumerate}
+
+\paragraph{}
+	The section also talks about if a machine which is designed to achieve a specific object is actually valuable or not.
+	There might be cases where just achieving the goal in real life is not practically possible or ethically viable.
+	Instead we need to set the objective of the machine in such a way that it both achieves the goal, and also doesn’t act in an unacceptable manner.
+
+
+
+\section{Section 1.2}
+\paragraph{}
+	This section gives us a brief history of all those fields which contributed in some way or other in the development of AI.
+
+	\begin{enumerate}
+
+		\item \textbf{Philosophy} : People had been thinking about reasoning and logic for long, even before computer were invented. The philosophers had been trying to make an artificial machine that could actually work on rationality and logic.
+
+		\item \textbf{Mathematics} :  This discipline is actually very fundamental for AI as logic and probability are very important for AI. The incompleteness theorem shows that there are statements that have no proof. 
+
+		\item \textbf{Economics} :  The models built to solve economical problems, like how to maximize profits or minimise losses have also contributed to development of AI. It sometimes require to take some decision making a trade-off, which it can optimize by knowledge of such models.	
+		\item \textbf{Neuroscience} : We now also have some data on mapping between areas of brain and parts of body they control or receive input from. This mapping data helps to develop AI models capable of optogenetics, i.e. to control the activity of neurons by using light. The development of brain-machine interfaces promises to restore function to disable individuals.
+
+		\item \textbf{Psychology} : In this field people focus to get information about what someone’s thought process would be like while performing some task. This data can later be used to make AI think in a similar manner to achieve human-like results.
+
+		\item \textbf{Computer Engineering} : This is a very obvious foundation of AI. All the operating systems, programming languages, and tools needed to develop AI programs were because of the advancements in computer science and engineering. The LLM’s nowadays require a lot of compute power which is supplied by this field. 
+
+		\item \textbf{Control Theory and Cybernetics} : This field tries to find the answer to the question, “How can artifacts operate under their own control?”. This field helps AI in adapting and modifying itself according to the place its working. It focuses to make AI homeostatic, which has feedback loops to achieve a stable behavior.
+
+		\item \textbf{Linguistics} : This field focuses on language learning. To understand the language, understanding the structure of the sentence is not enough. An understanding of the subject is also necessary to understand the language. 
+	\end{enumerate}
+
+
+	\bibliographystyle{plain}
+	\bibliography{ref.bib}
+
+
+\end{document}

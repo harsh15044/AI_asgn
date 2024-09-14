@@ -1,0 +1,220 @@
+\documentclass[44pt]{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2024
+
+
+% ready for submission
+%\usepackage[final]{neurips_2024}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+     \usepackage[preprint]{neurips_2024}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%    \usepackage[final]{neurips_2024}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2024}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+
+\title{Assignment-2 : AlphaGo}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{Harshvardhan Patidar\\
+  Department of Artificial Intelligence\\
+  Indian Institute of Technology Hyderabad\\
+  \texttt{ai24btech11015@iith.ac.in}
+  % example of co authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+}
+
+
+\begin{document}\
+
+
+
+\maketitle
+
+
+
+%If you want to add an abstract, use below commands
+%\begin{abstract}
+%\end{abstract}
+
+
+
+%use below command to get heading
+%\section{Heading}
+
+%If you don't want it to be included in the index, use
+%\section*{}
+
+
+
+%use below command to get sub-heading sort of thing
+%\subsection{Style}
+
+
+
+%use below commands for centering and url accordingly
+%\begin{center}
+%  \url{http://www.neurips.cc/}
+%\end{center}
+
+
+
+%Use below commmand for creating new paragraph
+%\paragraph{}
+
+
+
+%You can use below commands in the text to refer to specific sections (you need to use /label{} to where you are referring 
+%\ref{gen_inst}
+
+
+
+%use below to have nice tiny inline fractions, to increase space between them, use a tildae as in the latter
+%\nicefrac{1}{4} Hello this is harshvardhan, typing his latex assignments
+%\nicefrac{1}{4}~ Hello this is harshvardhan, typing his latex assignments
+
+
+
+%for adding a footnote (vo jo page ke niche hi niche aate hai)
+%\footnote{As in this example.}
+
+
+
+%For adding a photo/figure
+%\begin{figure}
+%  \centering
+%  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+%  \caption{Sample figure caption.}
+%\end{figure}
+
+
+
+%For a table	
+%\begin{table}
+%  \caption{Sample table title}
+%  \label{sample-table}
+%  \centering
+%  \begin{tabular}{lll}
+%    \toprule
+%    \multicolumn{2}{c}{Part}                   \\
+%    \cmidrule(r){1-2}
+%    Name     & Description     & Size ($\mu$m) \\
+%    \midrule
+%    Dendrite & Input terminal  & $\sim$100     \\
+%    Axon     & Output terminal & $\sim$10      \\
+%    Soma     & Cell body       & up to $10^6$  \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+
+
+
+%use for a giving a vertical space 
+%\medskip
+
+
+
+%Use for appendix (idk what it is)
+%\appendix
+
+
+
+%For yes, no or na
+%You should answer \answerYes{}, \answerNo{}, or \answerNA{}.
+
+
+
+\paragraph{}
+	AlphaGo - The Movie is a wonderful documentary which showcases the first advancement of AI to recreate human creativity in the highly strategic game of Go.
+	The most interesting part of the documentary is how it portrays the gradual development of AI’s capabilities which was achieved more than ten years ahead of what experts had predicted that such advancements would be possible by.
+
+
+\paragraph{}
+	Go is an ancient game which has been played for over thousands of years.
+	The documentary briefly describes how you would feel while playing the game making you realize the complexity of the game. 
+	It not only requires great skill, but pure dedication and constant practice as well.
+	Designing and making a tool which plays Go was a tough nut to crack.
+	In Go, there are over $200$ possible moves possible as compared to around $20$ in chess.
+	Analyzing all those moves is quite difficult, complicated and resource consuming-task.
+   
+
+
+
+
+\paragraph{}
+	The documentary mainly focuses on AlphaGo, an AI game engine, developed by DeepMind, a company under Google, and its magical ability of giving a tough competition to challenge professional Go players.
+	The documentary has shown the nail-biting matches of AlphaGo versus professional Go players like Fan Hui and Lee Sedol.
+	One of the most interesting parts to me was the “Move 37” played by AlphaGo in the second game against Lee Sedol, which was an indicator of AlphaGo’s self learning and improvement as this game defied the conventional Go playing strategies. 
+	Even though AlphaGo was mostly trained by human games, this move reveals its ability to think and develop its own strategies.
+	This was a demonstration of how AI can approach and solve real-life problems from new and creative angles.
+
+
+\paragraph{}
+	AlphaGo learned to play Go itself unlike IBM’s Deep Blue which was programmed by expert chess players.
+	Its training began by showing over 100,000 games that strong amateur players had played.
+	Then through self learning and reinforcement learning, it played against its own different versions of itself millions of times and learnt from its errors.
+
+
+\paragraph{}
+	AlphaGo has three main components. 	
+	First, The Policy Network was trained on high-level games to imitate those professional players. 
+	Seocond, The Value Net evaluates the board position and tells what is the probability of winning in this particular position. 
+	And Lastly, Tree search looks through the different variations of the board and tries to predict what will happen in the next few moves. 
+	For every move, policy network identifies the moves which might be interesting to play and builds up a tree of variation for them. 
+	Then the value net is deployed which calculates the chances of winning for every variation. 
+	AlphaGo simply tries to maximize its probability of winning.
+
+
+
+
+\paragraph{}
+	What I found interesting was that AlphaGo was not just replicating human moves, instead it was learning and innovating. 
+	It wasn’t programmed with strategies for playing, instead, it learned through playing against its own, and learning from its mistakes. 
+	This makes us view Artificial Intelligence as a potential revolutionary product in many other fields than gaming only.
+	Tactical use of Artificial Intelligence can transform industry by allowing machines to learn and adapt in ways humans can’t, and become more productive and efficient than ever before.
+
+
+\paragraph{}
+  In conclusion, AlphaGo - The Movie is a great journey through one of the first advancements in AI where it surpasses human thinking and challenges humans in the game of Go.
+  It offers a balanced perspective on both the excitement and the responsibility that come with AI’s increasing role in our day-to-day lives.
+
+\paragraph{Source}
+	\href{https://www.youtube.com/watch?v=WXuK6gekU1Y}{\em{AlphaGo - The Movie}}
+
+
+
+
+  \end{document}
