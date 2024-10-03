@@ -1,0 +1,280 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2024
+
+
+% ready for submission
+% \usepackage[final]{neurips_2024}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+    \usepackage[preprint]{neurips_2024}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%    \usepackage[final]{neurips_2024}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2024}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{amsmath}
+
+
+\title{Assignment-9\\Model Selection \& Optimization}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{Harshvardhan Patidar\\
+  Department of Artificial Intelligence\\
+  Indian Institute of Technology Hyderabad\\
+  \texttt{ai24btech11015@iith.ac.in}
+  % example of co authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+}
+
+
+\begin{document}\
+
+
+
+\maketitle
+
+
+
+%If you want to add an abstract, use below commands
+%\begin{abstract}
+%\end{abstract}
+
+
+
+%use below command to get heading
+%\section{Heading}
+
+%If you don't want it to be included in the index, use
+%\section*{}
+
+
+
+%use below command to get sub-heading sort of thing
+%\subsection{Style}
+
+
+
+%use below commands for centering and url accordingly
+%\begin{center}
+%  \url{http://www.neurips.cc/}
+%\end{center}
+
+
+
+%Use below commmand for creating new paragraph
+%\paragraph{}
+
+
+
+%You can use below commands in the text to refer to specific sections (you need to use /label{} to where you are referring 
+%\ref{gen_inst}
+
+
+
+%use below to have nice tiny inline fractions, to increase space between them, use a tildae as in the latter
+%\nicefrac{1}{4} Hello this is harshvardhan, typing his latex assignments
+%\nicefrac{1}{4}~ Hello this is harshvardhan, typing his latex assignments
+
+
+
+%for adding a footnote (vo jo page ke niche hi niche aate hai)
+%\footnote{As in this example.}
+
+
+
+%For adding a photo/figure
+%\begin{figure}
+%  \centering
+%  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+%  \caption{Sample figure caption.}
+%\end{figure}
+
+
+
+%For a table	
+%\begin{table}
+%  \caption{Sample table title}
+%  \label{sample-table}
+%  \centering
+%  \begin{tabular}{lll}
+%    \toprule
+%    \multicolumn{2}{c}{Part}                   \\
+%    \cmidrule(r){1-2}
+%    Name     & Description     & Size ($\mu$m) \\
+%    \midrule
+%    Dendrite & Input terminal  & $\sim$100     \\
+%    Axon     & Output terminal & $\sim$10      \\
+%    Soma     & Cell body       & up to $10^6$  \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+
+
+
+%use for a giving a vertical space 
+%\medskip
+
+
+
+%Use for appendix (idk what it is)
+%\appendix
+
+
+
+%For yes, no or na
+%You should answer \answerYes{}, \answerNo{}, or \answerNA{}.
+
+\paragraph{}
+  The aim of Model Selection \& Optimization is to select a hypothesis which will fit or generalize well to future data. 
+  We assume that the future examples will be simpler to the given past data, called the stationarity assumption. 
+  The goal is to select such a hypothesis that minimizes the error rate, or the ratio of $h(x) \neq y$ for some $(x,y)$ to total samples.
+
+\paragraph{}
+  For better selection of the hypothesis, the data set is split into three parts:
+  \begin{enumerate}
+    \item \textbf{Training set} : for training the model
+    \item \textbf{Validation set} : to evaluate the different models and choose the best performing one.
+    \item \textbf{Test set} : for final unbiased evaluation of the final model.
+  \end{enumerate}
+
+\paragraph{}
+  But in cases where the data is limited, we can use the $k$-fold cross-validation technique. 
+  In this, the data is divided into $k$ subsets. 
+  We then train the model $k$ times, each time holding out one of the subset for validation purposes. 
+  The average score of these $k$ folds is then used to estimate the model’s performance. 
+  Generally, we take $k$ to be $5$ or $10$. 
+  The most extreme case, when $k=n$ is called leave-one-out cross-validation or LOOCV.
+
+\section*{Model Selection}
+  \paragraph{}
+    To choose the best model we can use a simple algorithm which takes input a learner algorithm, which takes a hyperparameter, say size. 
+    For polynomials, size can be degree. 
+    The algorithm starts with the smallest value of size, and slowly increases it to obtain more complex models. 
+    In the end, the algorithm selects the model that has the lowest average error rate on the validation data which was taken aside. 
+
+\section*{Error Rates to Loss}
+  \paragraph{}
+    This section discusses ways to classify errors according to how severe they are. 
+    For example, It’s better to mark a spam mail as a non-spam mail rather than marking a non-spam as a spam mail. 
+    So, a program which classifies with a higher error rate but most of the errors are of marking spam as non-spam, is definitely way better than a model with lower error rate but, most of them being marking non-spam as spam, which is unfeasible. 
+    For this case, we can define a loss function, in which we can deduct 10 points for marking non-spam as spam compared to deducting only 1 point for marking a spam as a non-spam.
+
+  \paragraph{}
+    Instead, if we have real valued outputs, we can consider
+      \begin{enumerate}
+        \item $\mathbf{L_1(y, \hat{y})} : L_1(y, \hat{y}) = |y - \hat{y}|$
+        \item $\mathbf{L_2(y, \hat{y})}$ : $L_1(y, \hat{y}) = (y - \hat{y})^2$
+      \end{enumerate} 
+      where $L(y,\hat{y})$ is the loss function
+
+    For the case of discrete-valued outputs, we can use
+    \begin{equation*}
+      \mathbf{L_{0/1}(y, \hat{y})} = 0 \text{ if } y = \hat{y}, \text{ else } 1
+    \end{equation*}
+
+    The learning agent chooses the best hypothesis that minimizes the expected loss over all the data. 
+    That is it tries to minimize its generalization loss. We need a probability distribution $\mathbf{P}(X,Y)$ to calculate it. 	
+    The generalization loss is given by:
+    \begin{align*}
+      \text{GenLoss}_L(h) = \sum_{(x, y) \in E} L(y, h(x)) \cdot P(x, y)
+    \end{align*}
+
+    and our hypothesis $h^*$ in this case would be
+      \begin{equation*}
+        h^* = \arg\min_{h \in H} \text{GenLoss}_L(h)
+      \end{equation*}
+
+     But in case if we don’t have the probability distribution $\mathbf{P}(X,Y)$, then we can use empirical loss which is given by
+      \begin{equation*}
+        \text{EmpLoss}_{L, E}(h) = \frac{1}{N} \sum_{(x, y) \in E} L(y, h(x))
+      \end{equation*}
+    And $h^*$ will be
+      \begin{equation*}
+        \hat{h}^* = \arg\min_{h \in H} \text{EmpLoss}_{L, E}(h)
+      \end{equation*}
+
+  \paragraph{}
+    The difference in $h^*$ from the true function $f$ is mainly due to following reason:
+      \begin{enumerate}
+        \item \textbf{Unrealizability} : It is possible that our true function f is not present in our selected hypothesis space $\mathcal{H}$. 
+        \item \textbf{Variance} : if unrealizability isn’t an issue, then only after training over a very big data is that variance becomes low, else the function would be mostly overfitting.
+        \item \textbf{Noise} : There might be noise in the function $f$, which means it might output different values for the same $x$.
+        \item \textbf{Computational intractability} : It might be also the case that $\mathcal{H}$ is very large and that we are only going through a small portion of the space but not complete. In this case, its not guaranteed that the found hypothesis $h$ is the best one.
+      \end{enumerate}
+    
+  \paragraph{}
+    Traditionally we used to do small-scale learning, in which the training set used to be comparatively smaller, because of which $1^{st}$ and $2^{nd}$ type of errors were prominent. 
+    But nowadays, since we have very large data sets, the $3^{rd}$ and $4^{th}$ type of errors are more common as we don't have enough computational power to go through all of the hypothesis space.
+    
+
+\section*{Regularization}
+  \paragraph{}
+  Another way to find our hypothesis h is to use the method of regularization, which tries to minimize a cost function, which depends upon empirical loss and the complexity of the hypothesis.
+      \begin{align*}
+        \text{Cost}(h) &= \text{EmpLoss}(h) + \lambda \text{Complexity}(h) \\
+        \hat{h}^* &= \arg\min_{h \in \mathcal{H}} \text{Cost}(h).
+      \end{align*}
+    
+  \paragraph{}
+    Here $\lambda$ is a hyperparameter which works as a conversion rate between complexity and loss. 
+    This process of explicitly penalizing complex hypotheses is called Regularization. 
+    We try to keep our model midway being too simple and too complex. 
+    Being simple is not feasible as it might cause it to face underfitting, or not being able to find patterns in data. 
+    Whereas, being complex is not feasible as this might make the model memorize the data, hence decreasing the performance of the model on the unseen data.
+
+  \paragraph{}
+    One more notable way to reduce the complexity is feature selection. 
+    We try to reduce the number of attributes we provide as input by discarding the non-important ones. 
+    The Minimum Description Length (MDL) principle says that the hypothesis which can be expressed in the least number of bits in its Turing code is the most efficient hypothesis.
+
+\section*{Hyperparameter Tuning}
+      \paragraph{}
+      This is the process of selecting the best value of the hyperparameter in supervised learning. 
+      There are few methods for achieving this depending on the data set and the model being used.
+        \begin{enumerate}
+          \item \textbf{Hand Tuning} : It is the simplest method of hyperparameter tuning. Choose it by your prior knowledge, check its error rate, guess a new parameter value, again check its error rate, and repeat till you get the best result.
+          \item \textbf{Grid Search} : Useful in cases where you have only a few hyperparameters each with a small number of possible values. In this approach, all combinations of values are tried and the best performing hypothesis is selected.
+          \item \textbf{Random Search} : it’s a good way to handle continuous values. A value is randomly picked up from the sample until you are willing to spend time and computational resources.
+          \item \textbf{Bayesian Optimization} : In this method, we consider hyperparameter tuning also as a machine learning task. The model learns from its previous choice of hyperparameter and tries to choose a better hyperparameter in the next iteration. It makes a tradeoff between
+            \begin{enumerate}
+              \item Exploitation : Trying close values to previous good results.
+              \item Exploration : Trying new values.
+            \end{enumerate}
+          \item \textbf{Population-based Training (PBT)} : In this method, we train a few models each with varying hyperparameter values. Then, we train a second generation of models, whose hyperparameter values are based on the previous successful values. This way we get the best model.
+
+        \end{enumerate}
+    \end{document}
+
+

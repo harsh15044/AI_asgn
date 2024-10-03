@@ -1,0 +1,191 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2024
+
+
+% ready for submission
+% \usepackage[final]{neurips_2024}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+    \usepackage[preprint]{neurips_2024}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%    \usepackage[final]{neurips_2024}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2024}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+
+\title{Assignment-7 : The Structure of Agents}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{Harshvardhan Patidar\\
+  Department of Artificial Intelligence\\
+  Indian Institute of Technology Hyderabad\\
+  \texttt{ai24btech11015@iith.ac.in}
+  % example of co authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+}
+
+
+\begin{document}\
+
+
+
+\maketitle
+
+
+
+%If you want to add an abstract, use below commands
+%\begin{abstract}
+%\end{abstract}
+
+
+
+%use below command to get heading
+%\section{Heading}
+
+%If you don't want it to be included in the index, use
+%\section*{}
+
+
+
+%use below command to get sub-heading sort of thing
+%\subsection{Style}
+
+
+
+%use below commands for centering and url accordingly
+%\begin{center}
+%  \url{http://www.neurips.cc/}
+%\end{center}
+
+
+
+%Use below commmand for creating new paragraph
+%\paragraph{}
+
+
+
+%You can use below commands in the text to refer to specific sections (you need to use /label{} to where you are referring 
+%\ref{gen_inst}
+
+
+
+%use below to have nice tiny inline fractions, to increase space between them, use a tildae as in the latter
+%\nicefrac{1}{4} Hello this is harshvardhan, typing his latex assignments
+%\nicefrac{1}{4}~ Hello this is harshvardhan, typing his latex assignments
+
+
+
+%for adding a footnote (vo jo page ke niche hi niche aate hai)
+%\footnote{As in this example.}
+
+
+
+%For adding a photo/figure
+%\begin{figure}
+%  \centering
+%  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+%  \caption{Sample figure caption.}
+%\end{figure}
+
+
+
+%For a table	
+%\begin{table}
+%  \caption{Sample table title}
+%  \label{sample-table}
+%  \centering
+%  \begin{tabular}{lll}
+%    \toprule
+%    \multicolumn{2}{c}{Part}                   \\
+%    \cmidrule(r){1-2}
+%    Name     & Description     & Size ($\mu$m) \\
+%    \midrule
+%    Dendrite & Input terminal  & $\sim$100     \\
+%    Axon     & Output terminal & $\sim$10      \\
+%    Soma     & Cell body       & up to $10^6$  \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+
+
+
+%use for a giving a vertical space 
+%\medskip
+
+
+
+%Use for appendix (idk what it is)
+%\appendix
+
+
+
+%For yes, no or na
+%You should answer \answerYes{}, \answerNo{}, or \answerNA{}.
+
+\section*{Section - 2.4}
+  \paragraph{}
+    Agents are composed of two fundamental components: hardware and software. 
+    The hardware component is referred to as the architecture, which essentially contains elements such as CPU, sensors and actuators. 
+    Whereas, the software component is known as the agent program, which defines the agent’s behavior by taking input from the environment and performing the appropriate actions. 
+    This section focuses on the latter, that is the agent program.
+   
+  \begin{enumerate}
+    \item \textbf{Table-Driven Agents}: These types of agents have pre-written action sequences that the agent performs when it gets a particular input. It can be good for the cases where the possible percepts are less and the actions are easy to code. For cases where there are precepts from different sensors, it is not feasible to use such agents as this will require mapping every sequence of percept with an action which would take a lot of storage space and won't be efficient as well.
+    \item \textbf{Simple Reflex Agents}: These are simpler than the former ones as they are very much straightforward. They take the current percept, act according to the percept and then wait for the next percept. It has nothing to do with the previous percepts, and hence also doesn't require much memory. 
+    \item \textbf{Model-based Reflex Agents}: as the name suggests this type of agents maintain two internal models of the environment they are acting upon. They are called transition model and sensor mode. This can be helpful in cases when the sensors are not able to completely observe the environment.
+    \item \textbf{Goal-based Agents}: These agents do not have fixed action depending upon the percept, instead they act according to the goal they need to achieve. The earlier agent just did some steps for us but this type of agent can find and perform a set of actions to achieve the specified goal. It assesses what will be the consequences of its current action and decides on the basis of it.
+    \item \textbf{Utility-based Agents}: These agents perform better than the goal based agents as they dont have a single goal, instead they have a utility function, which might have a lot of goals in it. Like, for a self-driving car, reaching destination is not the only goal, it has several other goals as well, like maintaining fuel economy, reaching on time, maintaining comfort and safety. These goals might be conflicting, so these agents also might need to make some tradeoffs.
+  \end{enumerate}
+
+  \paragraph{}
+  This section also discusses the learning agents. These agents improve themselves over time by taking feedback on themselves. 
+  It has 4 components
+  \begin{enumerate}
+    \item \textbf{Learning element}: It makes improvements by using the feedback it gets.
+    \item \textbf{Performance element}: It is the main part, which decides the action to perform depending upon the percept it receives.
+    \item \textbf{Critic}: this analyzes how the agent is performing and provides feedback to the learning element.
+    \item \textbf{Problem Generator}: It suggests new action that might lead to new and informative experiences to improve the agent.
+  \end{enumerate}
+  
+  \paragraph{}
+  This section also gives us a brief idea of how do the components of the agent work. 
+  There are 3 type of representations of the environment, namely atomic, factored, and structured. 
+  As we move towards the later ones, they get more expressive and more complex as well. 
+  It also tells about the localist and distributed representations. 
+  If each memory location stores a concept, then it is localist. 
+  And if there are multiple memory locations all storing different parts of the concept, then it is distributed representation.
+
+\end{document}

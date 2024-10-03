@@ -1,0 +1,217 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2024
+
+
+% ready for submission
+% \usepackage[final]{neurips_2024}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+    \usepackage[preprint]{neurips_2024}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%    \usepackage[final]{neurips_2024}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2024}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+
+\title{Assignment-6 : Intelligent Agents}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{Harshvardhan Patidar\\
+  Department of Artificial Intelligence\\
+  Indian Institute of Technology Hyderabad\\
+  \texttt{ai24btech11015@iith.ac.in}
+  % example of co authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+}
+
+
+\begin{document}\
+
+
+
+\maketitle
+
+
+
+%If you want to add an abstract, use below commands
+%\begin{abstract}
+%\end{abstract}
+
+
+
+%use below command to get heading
+%\section{Heading}
+
+%If you don't want it to be included in the index, use
+%\section*{}
+
+
+
+%use below command to get sub-heading sort of thing
+%\subsection{Style}
+
+
+
+%use below commands for centering and url accordingly
+%\begin{center}
+%  \url{http://www.neurips.cc/}
+%\end{center}
+
+
+
+%Use below commmand for creating new paragraph
+%\paragraph{}
+
+
+
+%You can use below commands in the text to refer to specific sections (you need to use /label{} to where you are referring 
+%\ref{gen_inst}
+
+
+
+%use below to have nice tiny inline fractions, to increase space between them, use a tildae as in the latter
+%\nicefrac{1}{4} Hello this is harshvardhan, typing his latex assignments
+%\nicefrac{1}{4}~ Hello this is harshvardhan, typing his latex assignments
+
+
+
+%for adding a footnote (vo jo page ke niche hi niche aate hai)
+%\footnote{As in this example.}
+
+
+
+%For adding a photo/figure
+%\begin{figure}
+%  \centering
+%  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+%  \caption{Sample figure caption.}
+%\end{figure}
+
+
+
+%For a table	
+%\begin{table}
+%  \caption{Sample table title}
+%  \label{sample-table}
+%  \centering
+%  \begin{tabular}{lll}
+%    \toprule
+%    \multicolumn{2}{c}{Part}                   \\
+%    \cmidrule(r){1-2}
+%    Name     & Description     & Size ($\mu$m) \\
+%    \midrule
+%    Dendrite & Input terminal  & $\sim$100     \\
+%    Axon     & Output terminal & $\sim$10      \\
+%    Soma     & Cell body       & up to $10^6$  \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+
+
+
+%use for a giving a vertical space 
+%\medskip
+
+
+
+%Use for appendix (idk what it is)
+%\appendix
+
+
+
+%For yes, no or na
+%You should answer \answerYes{}, \answerNo{}, or \answerNA{}.
+
+
+\section*{What is an Agent?} 
+\paragraph{}
+  Agent is something which takes a percept(or simply input), by understanding or perceiving its environment, i.e. its surroundings, through sensors, and then accordingly acts upon the environment using actuators.
+  Now, to act according to a specific percept, or percept sequence, there needs to be an agent function, which maps every single percept to an action. 
+  This agent function is just an abstract mathematical description, but making and storing it is a difficult task as the number of percept sequences is very big. 
+  So, the actual implementation is done in the form of an agent program. Think of an agent program as a black box, you put in some percept sequences in it, and it will throw out some series of actions to perform on the environment.
+  All these three things combined, namely sensors, the black box, and the actuator form the agent.
+
+
+  \vspace{25pt}
+\section*{Good Behaviour}
+\paragraph{}
+For producing good behavior, we need to design rational agents. But how to know if an agent is rational or not?
+
+\paragraph{}
+  Performance Measures are mostly done by the method of consequentialism : evaluating the agent’s action based upon its consequences. 
+  Fitting in human goals in the agent will not always produce the desired output. 
+  There’s a difference in the point of view of a human and a machine. 
+  An agent might resort to some inefficient or unethical ways to just achieve its target, rather than being efficient and ethical. 
+  As a general rule, it is better to design performance measures according to what one actually wants to achieve in the environment, rather than according to how one thinks the agent should behave.
+
+\paragraph{}
+  Now we can define rational agents as the agents which try to maximize its performance measure for every percept sequence it encounters.
+  But rationality doesn't guarantee perfection. 
+  For perfection we need to have something called Omniscience, or knowing everything. 
+  There are always chances of something very unpredictable to take place. 
+  Even humans can’t always consider all such factors. 
+  By the notion of information gathering, an agent can do some actions to modify the future percepts. 
+  For information gathering, it might also do some exploration, for example in the case of vacuum-cleaning agents.  
+
+  \vspace{25pt}
+\section*{Task Environments}
+\paragraph{}
+  Now we know about almost everything that we need to know for making our rational agent. 
+  We now need to specify what will be the performance measure, environment, actuators and sensors for our agent. 
+  All these are grouped under the heading of Task Environment. 
+  It is also referred to as \textbf{PEAS} (\textbf{P}erformance, \textbf{E}nvironment, \textbf{A}ctuators, \textbf{S}ensors) description. 
+  Listing the \textbf{PEAS} gives us an outline of what the problem actually is and what our agent should achieve.
+
+\paragraph{}
+  The task environments can be categorized in several categories
+    \begin{itemize}
+      \item \textbf{Fully Observable} vs \textbf{Partially Observable} : In fully observable environment, an agent program has access to all the percepts which it require to make a choice for its action, where as in the partially observable environment, some data or percept is not reachable either due to lack of sensors, or inaccurate sensors.
+      \item \textbf{Single-agent} vs \textbf{Multi-agent} : There might be some cases where multiple agents might be working together, which might be a co-operative environment or competitive environment depending on the goal of the agent.
+      \item \textbf{Deterministic} vs \textbf{non-deterministic} : If the next state of the environment is completely determined by the current state and the action which is going to be performed, then the environment is deterministic. In the cases where this is not possible, if we have quantified probabilistic certainty, we call it stochastic, and if there is no quantitative probability at all, then it’s non deterministic.
+      \item \textbf{Episodic} vs \textbf{Sequential} : Episodic simply means the next action of the agent does not depend upon its previous action, whereas in the sequential environments, the current action might affect one or more future actions.
+      \item \textbf{Static} vs \textbf{Dynamic} : static environments remain static, i.e. they dont change while the agent is thinking, but dynamic environments might change while the agent is thinking. It’s important to consider the computation time that the agent takes to decide its actions.
+      \item \textbf{Known} vs \textbf{Unknown} : If an agent knows the basics, like laws of physics of an environment, then that environment is said to be a known environment, else it is an unknown environment and the agent needs to learn the basics before actually making good decisions.
+    \end{itemize}
+
+\paragraph{}
+    Designing our agent for a single environment isn't enough. 
+    We might need to make the same agent work in different environments, depending upon our needs.
+    For that purpose, we don't test our agent on a single environment, rather we test it on an environment class.
+    We consider the average performance of the agent over all the environments in the particular environment class we tested it upon.
+
+
+
+\end{document}

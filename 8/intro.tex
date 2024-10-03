@@ -1,0 +1,212 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2024
+
+
+% ready for submission
+% \usepackage[final]{neurips_2024}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+    \usepackage[preprint]{neurips_2024}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%    \usepackage[final]{neurips_2024}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2024}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{amsmath}
+
+
+\title{Assignment-8 : Supervised Learning}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{Harshvardhan Patidar\\
+  Department of Artificial Intelligence\\
+  Indian Institute of Technology Hyderabad\\
+  \texttt{ai24btech11015@iith.ac.in}
+  % example of co authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+}
+
+
+\begin{document}\
+
+
+
+\maketitle
+
+
+
+%If you want to add an abstract, use below commands
+%\begin{abstract}
+%\end{abstract}
+
+
+
+%use below command to get heading
+%\section{Heading}
+
+%If you don't want it to be included in the index, use
+%\section*{}
+
+
+
+%use below command to get sub-heading sort of thing
+%\subsection{Style}
+
+
+
+%use below commands for centering and url accordingly
+%\begin{center}
+%  \url{http://www.neurips.cc/}
+%\end{center}
+
+
+
+%Use below commmand for creating new paragraph
+%\paragraph{}
+
+
+
+%You can use below commands in the text to refer to specific sections (you need to use /label{} to where you are referring 
+%\ref{gen_inst}
+
+
+
+%use below to have nice tiny inline fractions, to increase space between them, use a tildae as in the latter
+%\nicefrac{1}{4} Hello this is harshvardhan, typing his latex assignments
+%\nicefrac{1}{4}~ Hello this is harshvardhan, typing his latex assignments
+
+
+
+%for adding a footnote (vo jo page ke niche hi niche aate hai)
+%\footnote{As in this example.}
+
+
+
+%For adding a photo/figure
+%\begin{figure}
+%  \centering
+%  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+%  \caption{Sample figure caption.}
+%\end{figure}
+
+
+
+%For a table	
+%\begin{table}
+%  \caption{Sample table title}
+%  \label{sample-table}
+%  \centering
+%  \begin{tabular}{lll}
+%    \toprule
+%    \multicolumn{2}{c}{Part}                   \\
+%    \cmidrule(r){1-2}
+%    Name     & Description     & Size ($\mu$m) \\
+%    \midrule
+%    Dendrite & Input terminal  & $\sim$100     \\
+%    Axon     & Output terminal & $\sim$10      \\
+%    Soma     & Cell body       & up to $10^6$  \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+
+
+
+%use for a giving a vertical space 
+%\medskip
+
+
+
+%Use for appendix (idk what it is)
+%\appendix
+
+
+
+%For yes, no or na
+%You should answer \answerYes{}, \answerNo{}, or \answerNA{}.
+
+\section*{Chapter 19 : Learning from Examples}
+  \paragraph{}
+    This chapter talks about how we can implement a sense of learning in the machines to ease our work and make them improve over time. Machine learning improves the functionality of different components of an agent program which depends upon:
+    \begin{enumerate}
+      \item Which component is to be improved.
+      \item What prior knowledge does the model have?
+      \item What data and feedback is available.
+    \end{enumerate}
+    
+    These components are agent function, sensors, information about how the world works and evolves over time, goal, utility function and the problem generator and critic which help the program to improve.
+
+  \paragraph{}
+    Machine learning has become a standard part of software development. Whether or not you call a software AI, but using machine learning can improve your software many-folds. Machine Learning had reduced the cost of cooling and maintaining high performance compute power that would have been required without it.	
+
+  \paragraph{}
+    There are three main types of learning, supervised, unsupervised and reinforcement learning. In supervised learning, we use a large number of input and output, called as a label to train the model. In unsupervised learning, we instead try to make a cluster of similar input from a large input data and try to label them, while in reinforcement learning, agents get feedback in form of rewards and punishments and try to improve on the basis of the feedback.
+
+
+\section*{Supervised Learning}
+    \paragraph{}
+      The objective of supervised learning is to find a function $h$ which is an approximation of the true function $f$ which maps the given input-output pairs. 
+      The function $h$ is called a hypothesis function. 
+      This hypothesis is drawn from a hypothesis space $\mathcal{H}$ of possible functions. 
+      The $\mathcal{H}$ may consist of various types of function such as boolean, polynomial, logical etc. 
+      For every data set, different hypothesis spaces might be appropriate. 
+      To find the best hypothesis space, we can perform exploratory data analysis, in other words we can try multiple hypothesis spaces and choose the best fitting one. 
+      A good hypothesis should fit well with unseen data also, as it determines the accuracy of the model. 
+      To fit well here means to accurately predict the output for some unseen input.
+    
+    \paragraph{}
+    To discuss the accuracy of a hypothesis, we need to use the words bias and variance. 
+    Bias refers to the tendency of a hypothesis $h$ to deviate from the true function $f$.
+    If it has high bias, then this hypothesis may be underfitting, which means the hypothesis is unable to find a pattern in the given data. 
+    The other word Variance tells us about how much the hypothesis varies when the training data is changed. 
+    If it has a high variance, then it might struggle with overfitting, which means the hypothesis may try to find useless patterns in the data rather than trying to find actual pattern. 
+    Since bias and variance don't go hand in hand, there is often a need to make a tradeoff between them, i.e. a choice between more complex, but low bias hypothesis, that might have high variance and may suffer overfitting, or a simpler model, which has lower variance, but is prone top under-fitting. 
+    Einstein suggests choosing the simplest model which goes well with the data which is identical to the Ockham’s Razor principle.
+
+  \paragraph{}
+    Some analyst use the probability method to find the most probable hypothesis $h^*$
+    \begin{align*}
+      \displaystyle h^* &= \arg \max_{h \in \mathcal{H}} P(h \mid \text{data}) \\ 
+      \displaystyle h^* &= \arg \max_{h \in \mathcal{H}} P(\text{data} \mid h) P(h)
+    \end{align*}
+    
+
+\section*{Example Problem}
+  \paragraph{}
+  We can consider an example problem, the aim of which is to decide whether to wait for a table at a restaurant or not. 
+  The input  $x \in \mathbb{R} ^ {10} $ will have ten attributes, like is there any other restaurant nearby, is it raining or not, whether it has a comfortable area to wait or not, how hungry we’re right now etc.
+  You can alway consider more or less attributes as per your choice.
+  All these inputs will have a output $\displaystyle y \in \{True, False\}$ which tells whether or not one should wait at the restaurant.
+  A model while learning from data relevant to this example can learn how significant different attributes are and what are their priority orders, and be able to produce the best possible output for some other test condition.
+\end{document}
