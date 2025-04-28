@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex 2024.7.14)  10 OCT 2024 22:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex 2024.7.14)  14 OCT 2024 20:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -599,57 +599,63 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 7
-3.
 
-(/opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dist/tex/latex/psnfss/ts1p
-tm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [1
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1
 
 
 {/opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dist/fonts/map/pdftex/updm
 ap/pdftex.map}{/opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dist/fonts/e
 nc/dvips/base/8r.enc}{/opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dist/
-fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2] [3] [4] (./intro.aux)
+fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2] [3]
+Underfull \hbox (badness 1668) in paragraph at lines 242--243
+ [][] \T1/ptm/m/n/10 (+20) In the clas-si-cal mod-els, where vari-ables were re
+al-valued, the con-di-tional dis-tri-bu-tion
+ []
+
+[4] [5] (./intro.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `intro.out' has not changed.
-(rerunfilecheck)             Checksum: CECD92FBAB740920AACC2DC52B3A8322;877.
+
+
+Package rerunfilecheck Warning: File `intro.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `intro.out':
+(rerunfilecheck)             Before: 75EE65968587FC034851C90E2D42468A;1286
+(rerunfilecheck)             After:  11BC98F7D525D42DED04D1B4DF089914;3159.
  ) 
 Here is how much of TeX's memory you used:
- 12781 strings out of 474116
- 202035 string characters out of 5732613
- 1941187 words of memory out of 5000000
- 34776 multiletter control sequences out of 15000+600000
- 591807 words of font info for 175 fonts, out of 8000000 for 9000
+ 12767 strings out of 474116
+ 201790 string characters out of 5732613
+ 1944187 words of memory out of 5000000
+ 34750 multiletter control sequences out of 15000+600000
+ 587062 words of font info for 165 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,1003b,560s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1003b,467s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmbx7.pfb></opt/homebrew/Cellar/texlive/202403
 12_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/
 Cellar/texlive/20240312_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
 0.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi5.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></opt/homebrew/Cellar/texlive/202
-40312_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/homebre
-w/Cellar/texlive/20240312_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-5.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr7.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/202
-40312_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/homebre
-w/Cellar/texlive/20240312_1/share/texmf-dist/fonts/type1/public/cm-super/sftt10
-00.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dist/fonts/type1/ur
-w/times/utmb8a.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dist/fo
-nts/type1/urw/times/utmr8a.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/t
-exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on intro.pdf (4 pages, 172657 bytes).
+lic/amsfonts/cm/cmmi7.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/homebrew/Cellar/texlive/202
+40312_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/homebrew
+/Cellar/texlive/20240312_1/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy7.pfb></opt/homebrew/Cellar/texlive/20240312_1/share/texmf
+-dist/fonts/type1/public/cm-super/sftt1000.pfb></opt/homebrew/Cellar/texlive/20
+240312_1/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cella
+r/texlive/20240312_1/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on intro.pdf (5 pages, 159697 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
- 38441 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 169 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 30257 words of extra memory for PDF output out of 35830 (max. 10000000)
 

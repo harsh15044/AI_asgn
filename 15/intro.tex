@@ -1,0 +1,217 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2024
+
+
+% ready for submission
+% \usepackage[final]{neurips_2024}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+    \usepackage[preprint]{neurips_2024}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%    \usepackage[final]{neurips_2024}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2024}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{amsmath}
+
+
+\title{Assignment-15 : Reinforcement Learning}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{Harshvardhan Patidar\\
+  Department of Artificial Intelligence\\
+  Indian Institute of Technology Hyderabad\\
+  \texttt{ai24btech11015@iith.ac.in}
+  % example of co authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+}
+
+
+\begin{document}\
+
+
+
+\maketitle
+
+
+
+%If you want to add an abstract, use below commands
+%\begin{abstract}
+%\end{abstract}
+
+
+
+%use below command to get heading
+%\section{Heading}
+
+%If you don't want it to be included in the index, use
+%\section*{}
+
+
+
+%use below command to get sub-heading sort of thing
+%\subsection{Style}
+
+
+
+%use below commands for centering and url accordingly
+%\begin{center}
+%  \url{http://www.neurips.cc/}
+%\end{center}
+
+
+
+%Use below commmand for creating new paragraph
+%\paragraph{}
+
+
+
+%You can use below commands in the text to refer to specific sections (you need to use /label{} to where you are referring 
+%\ref{gen_inst}
+
+
+
+%use below to have nice tiny inline fractions, to increase space between them, use a tildae as in the latter
+%\nicefrac{1}{4} Hello this is harshvardhan, typing his latex assignments
+%\nicefrac{1}{4}~ Hello this is harshvardhan, typing his latex assignments
+
+
+
+%for adding a footnote (vo jo page ke niche hi niche aate hai)
+%\footnote{As in this example.}
+
+
+
+%For adding a photo/figure
+%\begin{figure}
+%  \centering
+%  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+%  \caption{Sample figure caption.}
+%\end{figure}
+
+
+
+%For a table	
+%\begin{table}
+%  \caption{Sample table title}
+%  \label{sample-table}
+%  \centering
+%  \begin{tabular}{lll}
+%    \toprule
+%    \multicolumn{2}{c}{Part}                   \\
+%    \cmidrule(r){1-2}
+%    Name     & Description     & Size ($\mu$m) \\
+%    \midrule
+%    Dendrite & Input terminal  & $\sim$100     \\
+%    Axon     & Output terminal & $\sim$10      \\
+%    Soma     & Cell body       & up to $10^6$  \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+
+
+
+%use for a giving a vertical space 
+%\medskip
+
+
+
+%Use for appendix (idk what it is)
+%\appendix
+
+
+
+%For yes, no or na
+%You should answer \answerYes{}, \answerNo{}, or \answerNA{}.
+
+\section{Reinforcement Learning}
+  \subsection{Introduction}
+    \paragraph{} The nature of learning brings to us the idea of learning by interacting with the environment. For learning, we need to have a sensorimotor connection or simply a connection between our agent and the environment which allows the agent to get information about the environment and to act upon the environment using some actuators. Using this connection, we try to gain information about cause and effect, that is the consequence of actions, and which action leads ultimately to our goal. The approach of reinforcement learning is also somewhat similar to this. Here, we focus on goal-directed learning via ‘interaction’ with the environment, rather than the typical approaches used in other fields of machine learning, where the set of actions that can be performed was predefined. In RL, the agent can explore and obtain information about various actions and its consequences. 
+
+  \subsection{Examples}
+    \paragraph{} These examples will help you understand the nature of reinforcement learning
+    \begin{itemize}
+      \item A master chess player’s move depends upon both, possible replies by the opponent and the desirability of a particular move or position.
+      \item An adaptive controller controls the petroleum refinery’s operation based on real-time requirements.
+      \item A new-born calf, which struggles even to stand, starts running after 20 minutes of birth.
+      \item A mobile robot device deciding whether to explore new rooms or retreat back to recharge its battery, depending upon previous performance of battery.
+      \item For a person preparing breakfast, he slowly improves and prepares better breakfast after he learns, according to his level of hunger, nutritional requirements, food preferences.
+    \end{itemize}
+    In all these examples, there is an agent, which interacts with the environment, takes action, which in turn affects the future state. Correct choice making requires to consider the effects of the previous actions, which means that it is supposed to do some foresight and planning before making its next move.
+  
+  \subsection{Elements of Reinforcement Learning}
+    \paragraph{} The main elements of a RL system are :  a \textit{policy}, a \textit{reward signal}, a \textit{value function} and sometimes a \textit{model} of the function.
+    \paragraph{Policy} is a mapping from the current state to the actions to be taken. It may be a simple function or a lookup table or might be involving extensive computations. It is alone sufficient to determine the behaviour of a RL model. It is generally stochastic, that is, specifies probability for each action.
+    \paragraph{Reward signal} helps define the goal of a RL model. The environment sends a number, called a reward at every time step. The goal of a RL model is to maximize the sum of the rewards that it receives from the environment. The reward will be more for a step or action in the direction of achieving the goal as compared to some other move. Biologically, it may be considered analogous with pleasure and pain. They immediately define what the person is currently facing.
+    \paragraph{Value function} is similar to reward. The only difference between them is while reward tells which action is better in an immediate sense, value function tells which state is better in the long run. Roughly speaking, the value of a state is the total amount of reward that an agent can expect to accumulate over the future steps, starting from that state. Even though we want to maximize the rewards for a function, we take decisions based on the value function.
+    \paragraph{Model} of the environment is a part of some RL models called as \textit{model-based} agents. This model is used for planning the next moves for a particular state and its expected reward and value. Given a state and action, using the model, we can predict what will happen and try to modify our action accordingly to get a better outcome.
+
+  \subsection{Limitations and Scope}
+    \paragraph{} There are many evolutionary methods like the genetic algorithm, which do not estimate the value of some hypothesis function, instead they test multiple policies and pick the best performing one out of them. They do not actually interact with the environment. This renders them inefficient for many real world Reinforcement learning problems. RL focuses on interaction with the environment, which is more effective.
+
+  \subsection{An Example : Tic-Tac-Toe}
+    \paragraph{}We will consider this example of Tic-Tac-Toe to illustrate RL and differences between RL and other approaches to develop a tic-tac-toe playing agent. We assume that we’re playing against a less skilled opponent, and that both losses and draws are equally punishing for us.
+    \paragraph{}One might think of classical ways to make such an agent. The “minimax” is a classical solution from game theory which can be implemented. But it would not be very useful, as it expects the opponent to play in a certain manner. One other method, of dynamic programming, is also not useful in this scenario as it requires a complete specification of the opponent, and probability with which it makes moves.
+    \paragraph{}Evolutionary methods are applied, then they would directly search in the possible policies and use the one which has the highest probability of winning. For each policy, its probability of winning will be approximated by playing some games against the opponent. Such a model would successively generate and evaluate policies to obtain improvements.
+    \paragraph{}But when RL, the main player kicks in, the decisions begin to be made on the basis of a value function. We first make a table, which has a number corresponding to each state, which represents our probability of winning from that state. If we play $X$s, then all the states that have three $X$s in a row have a probability of 1, all those which have three $O$s in a row have 0 probability of winning, whereas all other states are assigned a probability of 0.5. According to the table, the state which has higher probability of winning is considered better. Now to actually play, we will examine the state we will reach for our every possible move, and look for their current probability in the table. Then we will greedily select the move with the highest winning probability. We might also go with some other move which might not have the highest probability of winning, to \textit{explore} the states we might never see otherwise.
+    \paragraph{}As we proceed in the game, we update the table with more accurate estimates of probability of winning. More precisely, the current value of the state is updated to make it more closer to the latter state. Let $S_t$ be state before the move, $S_{t+1}$ after the move, and $V(S_t)$ be the value function, then we can update like below
+    \begin{equation*}
+      V(S_t) \leftarrow V(S_t) + \alpha \left[ V(S_{t+1}) - V(S_t) \right]
+    \end{equation*}
+    Here $\alpha$ is the step-size parameter, which determines the rate of learning. This update rule is used in the \textit{Temporal-difference} learning method. This method converges to the true probabilities of winning.
+    \paragraph{}This example thus explains the difference between RL and evolutionary learning methods. While the evolutionary ones neglect individual contributions and only considers the final outcome if we won or lost the match, RL on the other hand, values each individual state while playing, which makes it more efficient. The application of RL is not limited to the game of tic-tac-toe but is very much widespread. It is applicable for continuous cases as well, though it becomes more complex. Here, tic-tac-toe has a small finite set, but RL can be used even when the set is very large, or even in fact infinite. For example in the game of backgammon, which has approximately $10^{20}$ states.
+    \paragraph{}Here we started just with the knowledge of the rules of the game, but in some other cases if we have prior knowledge, then that can very easily be incorporated into our model. In tic-tac-toe, the complete state is accessible, but RL can be applied in cases where the state is partially accessible. In a nutshell, what we saw about RL in this application is not the complete picture. RL is a lot more powerful than this.
+  
+
+  \subsection{Summary}
+    \paragraph{} It is clear from our understanding till now that RL is the first idea that comes into our mind when we think about making a machine learn in a goal-oriented way, and decision-making through interaction with the environment. It follows the Markov decision process framework, using states, actions, and rewards to represent the problem. The value and value functions are the key concepts which differentiates RL from the evolutionary learning methods.
+  
+  \iffalse
+  \subsection{Early History of Reinforcement Learning}
+    \paragraph{}The early history of RL has two main threads, both of which kind of did their own thing before eventually merging together into the modern RL. The first thread was about learning through trial and error, taking its inspiration from animal psychology. The other thread focused on optimal control i.e. basically figuring out how to get a system to behave the way you want it to over time using some value functions and dynamic programming. This part wasn’t very useful in the learning part.
+    \paragraph{}These two threads then related with a third thread of using temporal-difference methods. Then, by the 1980s, all the three threads merged together to form the modern RL. The second thread of optimal control emerged in the late 1950s. Bellman equation and Markov Decision Processes laid the foundation. Talking about Dynamic programming, even though it faces the issue of dimensionality, it still is a good method for solving stochastic problems. It has also evolved with the new techniques over the past years.
+    \paragraph{}The thread of trial and error learning dates back to the 1850s. American psychologist R.S. Woodworth states that it was first discussed by Alexander Bain and later brought into focus by Conway Lloyd Morgan in the 1890s by his study on animal behaviours. The “Law of effect”, of Edward Thorndike was able to capture the principle which states that responses followed by satisfaction are more likely to be repeated, while those followed by discomfort are less likely to be repeated. This principle has been influential in various learning theories. 
+    \paragraph{}The term “reinforcement” came into use after Thorndike, during Pavlov's 1927 work on conditioned reflexes. Pavlov described reinforcement as a way to strengthen the behaviour through stimuli presented at the right time. A true reinforcer creates lasting changes in behaviour rather than just temporary changes which fade away with time.
+    \paragraph{}Then the concept of trial and error learning in computers emerged in the discussions about AI. In 1948, Alan Turing proposed the “pleasure-plain system” based on the law of effect. There are few early machines which were made by using this training method. 
+    \paragraph{}During the 1960s and 1970s, despite the neglect of trial and error, there were still some systems which were using this method. One such notable example is the STeLLA system developed by John Andreae’s, which was learned through trial and error methods and interaction with the environment. It had an internal model of the world and had even addressed the hidden state issue. Another such system was MENACE (Matchbox Educable Naughts and Crosses Engine) developed by Donald Michie. It learned to play tic-tac-toe using the concepts of RL. Later, Donald Michie along with Chambers developed GLEE (Game Learning Expectimaxing Engine) and a RL controller named BOXES, which learned to balance a pole on a cart.
+    \paragraph{}The improvements in the field of learning automata also influenced the development of the modern RL, especially in the k-armed bandit problem, analogous to a slot machine with multiple levers. Learning automata is simple, it needs low-memory systems which try to improve the probability of winning rewards in the slot machine. The application of RL in economics started in 1973 with the application of learning theory to classical economic models. This led to RL studies within game theory.
+    \paragraph{}John Holland contributed to this area with his general theory of adaptive systems. Later he worked on classifier systems, introducing concepts like “bucket-brigade algorithm” for credit assignment. Classifier systems represent a major branch of RL research.
+    \paragraph{}Then came Harry Klopf, who revived the trial-and-error thread of reinforcement learning during the 1970s. He stated that the focus on Supervised learning has overlooked the capability of adaptive behaviours, emphasizing the hedonic aspect of behvaiour. 
+    \paragraph{}The third thread of temporal-difference (TD), which gives an update equation to update a variable based on the difference between that variable and its successor. It has linked the concepts of animal learning psychology to RL. in 1972, Harry Klopf combined these concepts with his notion of “generalized reinforcement”, where learning components for instance, neurons would interepret exciting inputs as positive reward, and inhibiting input as negative rewards.
+  \fi
+
+
+
+\end{document}

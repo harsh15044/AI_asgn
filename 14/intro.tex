@@ -1,0 +1,276 @@
+\documentclass{article}
+
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2024
+
+
+% ready for submission
+% \usepackage[final]{neurips_2024}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+    \usepackage[preprint]{neurips_2024}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%    \usepackage[final]{neurips_2024}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2024}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{amsmath}
+
+
+\title{Assignment-14\\ RNNs, Unsupervised Learning and Applications}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{Harshvardhan Patidar\\
+  Department of Artificial Intelligence\\
+  Indian Institute of Technology Hyderabad\\
+  \texttt{ai24btech11015@iith.ac.in}
+  % example of co authors
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+}
+
+
+\begin{document}\
+
+
+
+\maketitle
+
+
+
+%If you want to add an abstract, use below commands
+%\begin{abstract}
+%\end{abstract}
+
+
+
+%use below command to get heading
+%\section{Heading}
+
+%If you don't want it to be included in the index, use
+%\section*{}
+
+
+
+%use below command to get sub-heading sort of thing
+%\subsection{Style}
+
+
+
+%use below commands for centering and url accordingly
+%\begin{center}
+%  \url{http://www.neurips.cc/}
+%\end{center}
+
+
+
+%Use below commmand for creating new paragraph
+%\paragraph{}
+
+
+
+%You can use below commands in the text to refer to specific sections (you need to use /label{} to where you are referring 
+%\ref{gen_inst}
+
+
+
+%use below to have nice tiny inline fractions, to increase space between them, use a tildae as in the latter
+%\nicefrac{1}{4} Hello this is harshvardhan, typing his latex assignments
+%\nicefrac{1}{4}~ Hello this is harshvardhan, typing his latex assignments
+
+
+
+%for adding a footnote (vo jo page ke niche hi niche aate hai)
+%\footnote{As in this example.}
+
+
+
+%For adding a photo/figure
+%\begin{figure}
+%  \centering
+%  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
+%  \caption{Sample figure caption.}
+%\end{figure}
+
+
+
+%For a table	
+%\begin{table}
+%  \caption{Sample table title}
+%  \label{sample-table}
+%  \centering
+%  \begin{tabular}{lll}
+%    \toprule
+%    \multicolumn{2}{c}{Part}                   \\
+%    \cmidrule(r){1-2}
+%    Name     & Description     & Size ($\mu$m) \\
+%    \midrule
+%    Dendrite & Input terminal  & $\sim$100     \\
+%    Axon     & Output terminal & $\sim$10      \\
+%    Soma     & Cell body       & up to $10^6$  \\
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+
+
+
+%use for a giving a vertical space 
+%\medskip
+
+
+
+%Use for appendix (idk what it is)
+%\appendix
+
+
+
+%For yes, no or na
+%You should answer \answerYes{}, \answerNo{}, or \answerNA{}.
+
+\section{Recurrent Neural Networks}
+  \paragraph{RNNs} provide a way to make cycles in the computation graphs we had discussed till now. Each cycle has a delay, so that the output produced by that particular node can be a part of the input of the same node in the next cycle. RNN can perform more general computations instead of the boolean calculations which was the limit of the traditional feedforward neural networks. RNNs  are mostly used to analyze sequential data, where a new input vector arrives at every timestep. RNNs add expressive power to the feedforward networks in the case of sequential data. If a feedforward network had been used, the input layer has a fixed size, because of which only a fixed length of input data would be analyzed, ignoring the rest of the data.
+  \subsection{Training a basic RNN}
+    \paragraph{}For a basic model, we will consider it to have an input layer \textbf{x}, an hidden layer \textbf{z}, and an output layer \textbf{y}. We will observe both the input and output at each time step. The following equations give the values of variables at a time step $t$.
+    
+    \begin{align*}
+      \mathbf{z}_{t} &= g_{z} \left( \mathbf{W}_{z, z} \mathbf{z}_{t-1} + \mathbf{W}_{x, z} \mathbf{x}_{t} \right) \equiv g_{z} (\text{in}_{z,t}) \\
+      \hat{\mathbf{y}}_{t} &= g_{y} \left( \mathbf{W}_{z, y} \mathbf{z}_{t} \right) \equiv g_{y} (\text{in}_{y,t})
+    \end{align*}
+
+    Here \textbf{g} are the activation function for the respective layer. One important and interesting observation is that we can express this RNN in the form of a feedforward network by unrolling the network for some $T$ steps if the number of input vectors is $T$. The drawback for this feedforward network is that the gradient calculation will be comparatively more complicated, as in RNN the gradients are not needed to be  calculated repeatedly.
+    \paragraph{} For calculating and updating the weights of hidden layer, we need to find the gradient of the loss function w.r.t. these weights. The calculations are below:
+
+    \begin{align*}
+      \frac{\partial L}{\partial \mathbf{w}_{z,z}} &= \frac{\partial}{\partial \mathbf{w}_{z,z}} \sum_{t=1}^{T} (y_t - \hat{\mathbf{y}}_t)^2 \\
+      &= \sum_{t=1}^{T} -2 (y_t - \hat{\mathbf{y}}_t) \frac{\partial \hat{\mathbf{y}}_t}{\partial \mathbf{w}_{z,z}} \\
+      &= \sum_{t=1}^{T} -2 (y_t - \hat{\mathbf{y}}_t) \frac{\partial}{\partial \mathbf{w}_{z,z}} g_y(\text{in}_{y,t}) \\
+      &= \sum_{t=1}^{T} -2 (y_t - \hat{\mathbf{y}}_t) g'_y(\text{in}_{y,t}) \frac{\partial}{\partial \mathbf{w}_{z,z}} \text{in}_{y,t} \\
+      &= \sum_{t=1}^{T} -2 (y_t - \hat{\mathbf{y}}_t) g'_y(\text{in}_{y,t}) \frac{\partial}{\partial \mathbf{w}_{z,z}} \left( \mathbf{w}_{z,y} \mathbf{z}_t + \mathbf{w}_{0,y} \right) \\
+      &= \sum_{t=1}^{T} -2 (y_t - \hat{\mathbf{y}}_t) g'_y(\text{in}_{y,t}) \mathbf{w}_{z,y} \frac{\partial \mathbf{z}_t}{\partial \mathbf{w}_{z,z}} 
+    \end{align*}
+      
+
+    Also, the gradient of the hidden unit $z_t$ is calculated below.
+    \begin{align*}
+      \frac{\partial \mathbf{z}_{t}}{\partial \mathbf{w}_{z,z}} &= \frac{\partial}{\partial \mathbf{w}_{z,z}} g_{z}(\text{in}_{z,t}) \\
+      &= g'_{z}(\text{in}_{z,t}) \frac{\partial}{\partial \mathbf{w}_{z,z}} \left( \mathbf{w}_{z,z} \mathbf{z}_{t-1} + \mathbf{W}_{x,z} \mathbf{x}_{t} + \mathbf{w}_{0,z} \right) \\
+      &= g'_{z}(\text{in}_{z,t}) \left( \mathbf{z}_{t-1} + \mathbf{w}_{z,z} \frac{\partial \mathbf{z}_{t-1}}{\partial \mathbf{w}_{z,z}} \right) \tag{22.15}
+    \end{align*}
+
+    The gradient calculations are recursive, meaning that we can calculate the gradient from time step $t$ using the contribution of the step $t-1$. Right ordering of the calculations can make the complexity of the function linear with the size of the network. This algorithm is called back-propagation through time. This is usually executed automatically by the deep learning softwares.
+
+  \subsection{Long short-term memory RNNs}
+  \paragraph{} LSTM has been designed with the goal to preserve information for many time steps. The long term memory component is called memory cell, denoted by \textbf{c}, and is copied from one time step to another. Apart from this, we have gating units, which control and check the flow of information from one step to another.
+    \begin{enumerate}
+      \item The Forget gate,$f$  determines if all the memory cells of the previous time step are copied or not.
+      \item The input gate, $i$ checks if each element in the input vectors has been considered and added to the memory cell.
+      \item The output gate, o determines if each of the elements from the memory cell is transferred back to the short term memory \textbf{z} (it is similar to the hidden layer in the basic RNNs).
+    \end{enumerate}
+
+    The gate functions here are not boolean, instead they are soft and in the range of $[0,1]$. This is useful in the cases when the elements of the memory cell are partially forgotten, when the values of the gate are smaller than 1, but not 0. The update equations are :
+    \begin{align*}
+      \mathbf{f}_t &= \sigma(\mathbf{W}_{x,f} \mathbf{x}_t + \mathbf{W}_{z,f} \mathbf{z}_{t-1}) \\
+      \mathbf{i}_t &= \sigma(\mathbf{W}_{x,i} \mathbf{x}_t + \mathbf{W}_{z,i} \mathbf{z}_{t-1}) \\
+      \mathbf{o}_t &= \sigma(\mathbf{W}_{x,o} \mathbf{x}_t + \mathbf{W}_{z,o} \mathbf{z}_{t-1}) \\
+      \mathbf{c}_t &= \mathbf{c}_{t-1} \odot \mathbf{f}_t + \mathbf{i}_t \odot \tanh(\mathbf{W}_{x,c} \mathbf{x}_t + \mathbf{W}_{z,c} \mathbf{z}_{t-1}) \\
+      \mathbf{z}_t &= \tanh(\mathbf{c}_t) \odot \mathbf{o}_t
+      \end{align*}
+
+
+
+\section{Unsupervised Learning and Transfer Learning}
+  \paragraph{} The Supervised learning that we discussed till now is not the best possible method for all the real-world problems as it requires a lot of labelled data for the training purpose. Labelled data is often quite expensive as it would require expensive human labour to sit and label each of the examples in the data set. Unsupervised learning plays its role in such cases. Unsupervised learning algorithms learn from unlabelled data, which is available abundantly at low costs. It typically produces a generative model. Transfer learning and semi supervised learning are also such two algorithms, which require only a little labelled data, and later improved by learning from unlabelled data.
+  \subsection{Unsupervised Learning}
+    \paragraph{} Unsupervised learning typically has the goal of making a generative model. Suppose we learn some joint model $P_W(\mathbf{x,z})$. Here \textbf{z} is a set of some unobserved variables, which in some way represent the data or the content in \textbf{x}. It is the choice of a model on how to associate \textbf{z} with \textbf{x}. For example, if a model is trained on images of handwritten digits, then the model might choose to use one variable in \textbf{z} to represent the thickness of the stroke, another for ink color, another for background color, etc. In this way, a learned probability model $P_W(\mathbf{x,z})$ achieves both representation learning and generative modeling. As it has constructed a meaningful \textbf{z} out of raw input, it achieves representation learning. On the other hand if we don’t integrate z in the $P_W(\mathbf{x,z})$, we get $P_W(\mathbf{x})$, which acts like an generative model.
+    \subsubsection{Probabilistic PCA : A simple generative model}
+      \paragraph{} The simplest model whose form $P_W(\mathbf{x,z})$ might take is probabilistic principal components analysis(PPCA). In this model, we choose \textbf{z} from a spherical gaussian, whose mean is non-zero. 
+      \begin{align*}
+        P(\mathbf{z}) &= \mathcal{N}(\mathbf{z}; 0, \mathbf{I})
+        \end{align*}
+      
+        Then \textbf{x} is generated from this \textbf{z} by applying a weight matrix \textbf{W}, and some spherical gaussian noise, to make it more robust.
+        \begin{align*}
+          P_{\mathbf{W}}(\mathbf{x}|\mathbf{z}) &= \mathcal{N}(\mathbf{x}; \mathbf{Wz}, \sigma^2 \mathbf{I})
+        \end{align*}
+
+          Now, the weight matrix \textbf{W} will be learned by maximizing the likelihood of the data
+          \begin{align*}
+            P_{\mathbf{W}}(\mathbf{x}) &= \int P_{\mathbf{W}}(\mathbf{x}, \mathbf{z}) \, d\mathbf{z} = \mathcal{N}(\mathbf{x}; 0, \mathbf{W}\mathbf{W}^\top + \sigma^2 \mathbf{I})
+            \end{align*}
+
+            There are several methods to do the maximization. We can either use the gradient methods, or the iterative method of EM algorithms. This way once we learn \textbf{W}, we can generate new data samples directly from the $P_W(\mathbf{x})$ using the above equation. We take the dimensionality of \textbf{z} to be much less than that of the input so that the model learns to explain the input well with fewer features.
+    \subsubsection{Autoencoders}
+            \paragraph{} These are a type of models used in Unsupervised Learning. It has two parts. The first part maps input data $\mathbf{x}$ to a latent representation $\hat{\mathbf{z}}$ using a function $f$, and is called the encoder. The second part is decoder, which maps the latent representation $\hat{\mathbf{z}}$ back to the original input $\mathbf{x}$, using a function $g$. The goal is to train the model so that the decoding process produces output that is approximately equal to the original input. 
+            \paragraph{} For a simplest encoder, i.e. linear autoencoder, both $f$ and $g$ are linear functions having a shared weight matrix $\mathbf{W}$: \begin{equation} \hat{\mathbf{z}} = f(\mathbf{x}) = \mathbf{W}\mathbf{x} \end{equation} \begin{equation} \mathbf{x} = g(\hat{\mathbf{z}}) = \mathbf{W}^\top \hat{\mathbf{z}} \end{equation} These equations show that the reconstruction process involves using the transpose of the weight matrix.
+            \paragraph{} The objective is to minimize the squared error between the original input and the restored input, given by: \begin{equation} \sum_{j} \left| \mathbf{x}_j - g(f(\mathbf{x}_j)) \right|^2 \end{equation} The goal of this training process is to learn a matrix $\mathbf{W}$ such that the low-dimensional vector $\hat{\mathbf{z}}$ retains maximum possible information from the high-dimensional input data $\mathbf{x}$. 
+   
+    \subsubsection{Deep Regressive Model}
+            \paragraph{}These are the models in which each element $\mathbf{x}_i$ of an input vector $\mathbf{x}$ is predicted on the basis of the other elements of the vector. If $\mathbf{x}$ is of fixed size, an AR model can be viewed as fully observable and might also be a fully connected Bayes net. In this framework, calculating the likelihood of a given data vector $\mathbf{x}$, predicting the value of some missing variable, and sampling a data vector from the model are all easy and straightforward tasks.
+            \paragraph{} For timed data, an AR model of order $k$ predicts $\mathbf{x}t$ given $\mathbf{x}{t-k}, \dots, \mathbf{x}_{t-1}$. Mathematically, this is expressed as:
+              \begin{align*}
+                P(\mathbf{x}_t | \mathbf{x}_{t-k}, \dots, \mathbf{x}_{t-1})
+              \end{align*}
+            \paragraph{}  In the classical models, where variables were real-valued, the conditional distribution $P(\mathbf{x}t | \mathbf{x}{t-k}, \dots, \mathbf{x}{t-1})$ was usually a linear-Gaussian model with constant variance. The mean was a weighted linear combination of $\mathbf{x}{t-k}, \dots, \mathbf{x}_{t-1}$, similar to the standard linear regression model. The maximum likelihood for this model was given by the Yule–Walker equation.
+            \paragraph{} In deep autoregressive models, our assumption of linear-Gaussian is replaced by a deep network which has a flexible and nonlinear structure. The output of the network depends on whether $\mathbf{x}_t$ is discrete or continuous. One famous application is WaveNet by DeepMind, which uses a deep autoregressive model for speech generation.
+
+    \subsubsection{Generative Adversarial Networks}
+              \paragraph{} A GAN is a pair of networks that combine to form the complete model. The first is Generator, which maps a latent vector $\mathbf{z}$ to data space $\mathbf{x}$, producing some samples. And the second model is discriminator, which simply classifies the input as real or fake. Here, real means the ones given as input in data, and fake are the ones which are produced by the generator.
+              \paragraph{} Both the models are trained in a competitive manner, where generators try to fool the discriminator by generating better data each time, and the discriminator tries to classify it correctly. At the end, the generator starts generating very similar data as the given input, and the discriminator starts to just randomly guess if it's real or fake. Such models are very successful in generating high-quality images.
+
+    \subsubsection{Unsupervised Translation}
+              \paragraph{} The main task of such models is to transform a multi-dimensional input \textbf{x} to a multi-dimensional output \textbf{y}. For example, converting a night image to a day image as if it was taken in day only. In the case of supervised translation, we gather (\textbf{x,y}) and then learn from these, but this data is not alway available. In these cases we use Unsupervised Translation. This is accomplished by training two GANs, first one is trained to generate output \textbf{y} out of the input \textbf{x}, and the other does the reverse.
+
+  \subsection{Transfer Learning and Multitask Learning}
+    \subsubsection{Transfer Learning}
+              \paragraph{} It basically means using already learned models to learn some new similar task. For example if someone already knows how to play tennis, he will find learning to play badminton easy. This is accomplished by simply copying the weights of an already trained model for some task A, to a new model and then fine tuning those weights so that it fits for some task B. Human intervention is required to choose which pretrained model to use for the new model which is to be developed. RoBERTA is a common pretrained model which serves as a starting point for developing natural language models.
+    \subsubsection{Multitask Learning}
+              \paragraph{} It is nothing but a specialized form of transfer learning in which we simultaneously train the model on multiple tasks rather than copying the weights to a new model, and then further training that model. Learning all the tasks simultaneously helps it to improve and perform better than what it would have when trained individually for those tasks.
+
+\section{Applications}
+              \paragraph{} Deep learning has been applied in various important areas in AI. Some of them are
+              \subsection{Vision}
+                \paragraph{} Computer vision is the field which has been most impacted by Deep Learning, especially after the victory of AlexNet in the 2012 ImageNet competition. AlexNet was based on deep learning, and that’s why its victory led to the focus of researchers to shift to deep learning. We have improved a lot in computer vision by improvements in all the tasks like network design , training methods, and compute resources. The top-5 error rate has come down to less than 2\%, much less than that of a well trained human (5\%). CNNs have been used for self-driving cars, grading cucumbers, etc.
+              \subsection{Natural Language Processing}
+                \paragraph{} NLP applications such as machine translation and speech recognition are also impacted by Deep Learning, which has allowed the possibility of end-to-end learning, automatic generation of internal layers/representations for words. For example, for the simple task of translation of a sentence from one language to another, earlier, separate models were used to accomplish the tasks by using the pipeline method. But now, a single trained model does the complete task reducing the possibility of error by a great factor. In Word embeddings, the internal meaning of the words is extracted from a learned model into some high-dimensional vector. The words with similar meanings are placed close to each other, which helps the model to make better predictions for the next word of some statement depending on the context.
+              \subsection{Reinforcement Learning}
+                \paragraph{} In RL, an agent is made to learn by giving a sequence of rewards based on the quality of its behavior. The goal is to optimize the sum of the future rewards. Deep Reinforcement Learning is the field of research in which deep learning is used for reinforcement learning. DeepMinds’s DQN and AlphaGO are two successful examples of it. Still it is difficult to implement RL, as it is difficult to obtain good performance, and the models may perform very unpredictably in slightly modified environments.  
+
+      
+
+
+
+      
+   
+
+
+
+\end{document}

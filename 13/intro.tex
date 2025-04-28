@@ -35,7 +35,7 @@
 \usepackage{amsmath}
 
 
-\title{Assignment-13 : CNNs, Learning Algorithms \& Generalization}
+\title{Assignment-13 \\ CNNs, Learning Algorithms \& Generalization}
 
 
 % The \author macro works with any number of authors. There are two commands
@@ -71,7 +71,7 @@
    
   \begin{itemize}
     \item \textbf{Local connectivity} : each unit in the hidden layer receives input from only a small, local region of the image. It has two benefits, first it considers the adjacency of the pixels, and also it reduces the computational power requirements as the number of weights required will be a lot lesser than a fully connected network.
-    \item \textbf{Spatial Invariance} : Images also have a spatial invariance, i.e. is that the features(like edges or textures of objects) can appear anywhere in the image. To consider this, the weights of local connections are constrained to be the same across different parts of the image. The pattern of weights that is being replicated is called a kernel. This allows the model to detect a feature in an image regardless of its location in the image. This process is termed as convolution.
+    \item \textbf{Spatial Invariance} : Images also exhibit spatial invariance, i.e. the features(like edges or textures of objects) can appear anywhere in the image. To consider this, the weights of local connections are constrained to be the same across different parts of the image. The pattern of weights that is being replicated is called a kernel. This allows the model to detect a feature in an image regardless of its location in the image. This process is termed as convolution.
     \item \textbf{Convolution Operation} : This operation applies a kernel, say $mathbf{k}$ to an input  vector $mathbf{x}$, such that $mathbf{z } =mathbf{x} * mathbf{k}$, which is defined as
       \begin{equation*}
         z_i = \sum_{j=1}^{l} k_j \, x_{j+i-\frac{(l+1)}{2}}
